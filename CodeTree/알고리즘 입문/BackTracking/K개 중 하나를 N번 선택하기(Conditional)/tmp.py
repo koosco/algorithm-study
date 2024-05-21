@@ -1,3 +1,4 @@
-dict = {}
-dict['a'] = 10
-print(dict)
+asdf = [1, 2, 3, 4]
+for i in range(4):
+    asdf[i] += 1
+print(*asdf)

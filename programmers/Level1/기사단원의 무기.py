@@ -1,18 +1,14 @@
-def get_prime(number):
-    ret = []
-    for i in range(1, int(number ** .5) + 1):
-        if not number % i:
-            ret.append(number // i)
-            ret.append(i)
-    return len(set(ret))
-
-
 def solution(number, limit, power):
-    answer = 0
-    for num in range(1, number + 1):
-        attack = get_prime(num)
-        if attack > limit:
-            answer += power
-        else:
-            answer += attack
-    return answer
+    def get_power(x):
+        s = set()
+        for i in range(1, int(x ** .5) + 1):
+            if not x % i:
+                s.add(i)
+                s.add(x // i)
+        return len(s)
+
+    res = 0
+    for y in range(1, number + 1):
+        p = get_power(y)
+        res += (power if p > limit else p)
+    return res
